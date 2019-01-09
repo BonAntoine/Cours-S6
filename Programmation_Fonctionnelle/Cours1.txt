@@ -1,0 +1,60 @@
+Paradigme Programmation fonctionnelle
+
+* Les fonctions sont des "citoyens de première classe"
+	- Une variable peut être une fonction
+	- Une fonction peut prendre une fonction en argument
+	- Une fonction peut retourner une fonction
+	- Une fonction peut être une structure de donnée
+
+
+Impératif --> Calcul une suite d'état (POO essaye de résoudre le problème) autre paradigme ?
+
+Fonctionnel : calcul est découpé en VALEURS
+Chaque valeur (expression) est composée de sous-expression
+
+* Pureté
+
+Avec le fonctionel, il n'y a pas d'effet de bord --> pureté
+	-Plus facile à tester / parallèliser
+	-Transparence déférentielle : On peut remplacer une expression par sa valeur
+
+
+Plusieur langages, on utilisera un langage exclusivement fonctionel -> Haskell
+
+Ecrire la somme des nombres allant de 1 à n :
+
+somme n = sum [1..n]
+
+En Haskell il n'y a pas de for /!\
+
+La même chose :
+
+somme2 n = sum (enumFromTo 1 n)
+
+Autre exemples :
+
+sommePairs n = sum [2,4..n]
+sommePairs n = sum (enumFRomThenTO 2 4 n)
+
+sommeCarres n = sum (map(^2)[1..n])
+
+Syntaxe :
+
+(x:xs) veut dire : une liste qui contient au moins un élément dont la tête est x et la queue est xs
+
+Les fonctions sont prioritaires sur toute les autres opérations
+Concaténation de lise :
+[1,2,3] ++ [4,5]
+
+Opération avant une liste possible : head, tail, drop x, take x, length, sum, product...
+
+Haskell est fortement typé statiquement
+-Les types sont un ensemble de valeur
+-Typage fort : Tout est typé, pas de type de n'importe quoi (genre type object), pas de cast implicite
+-Statiquement : à la compilation
+
+"it" indique le type de la dernière valeur utilisée
+
+Fonction et valeurs commence par une minuscule, contrairement aux types qui commence par une majuscule (False, True...)
+
+maxBound : Donne la limite du type (maxBound :: Int), de même pour minBound

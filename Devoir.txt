@@ -1,0 +1,19 @@
+Devoir :
+
+A revoir : 
+AEL : 
+
+Les minimisations de graphes
+Equation de graphes
+Langage résiduel
+LL1 et grammaire algebrique ou regulière
+
+ARO :
+Parcours en largeur
+Parcours en profondeur
+
+
+PDS :
+TP : finir multi thread
+
+14 décembre 13h00 oral TP C, voir dossier du prof pour les horaires
