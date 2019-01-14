@@ -9,6 +9,7 @@ class Vector {
     this.y=y;
   }
 
+
   setRandInt(p1, p2){
   	this.x = randInt(p1.x, p2.x);
   	this.y = randInt(p1.y, p2.y);

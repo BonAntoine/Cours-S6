@@ -7,7 +7,7 @@
 class GeneratorBox {
   constructor() {
     this.nbBirth=0;
-    this.birthRate=0.2;
+    this.birthRate=0.8;
     this.min = new Vector(0, 0);
     this.max = new Vector(0, 0);
     this.lifeExpectancyMin = 30;
@@ -24,6 +24,19 @@ class GeneratorBox {
     p.lifeTime = randInt(this.lifeExpectancyMin, this.lifeExpectancyMax);
 
     return p;
+  }
+
+  distance(m){
+    return Math.sqrt(Math.pow((m.x-this.min.x), 2)+Math.pow((m.y-this.min.y), 2));
+  }
+
+  move(m){
+    //Deplace le haut gauche au point de la souris
+    this.min.x += m.x;
+    this.min.y += m.y;
+    //Calcul du bas à droite
+    this.max.x += m.x;
+    this.max.y += m.y;
   }
 };
 
@@ -63,6 +76,8 @@ class ParticleManager {
     this.all=[]
     this.nbAliveMax=300;
     this.generatorList = [];
+    this.selected = null;
+    this.obstacleManager = new ObstacleManager();
 
     for(var i=0;i<this.nbAliveMax;++i) {
       this.all.push(new Particle());
@@ -114,4 +129,23 @@ class ParticleManager {
     }
   }
 
+  select(mouse){
+    //Max distance where an object is selected
+    var distance = 50;
+
+    for(var i = 0; i < this.generatorList.length; i++){
+      if(this.generatorList[i].distance(mouse) <= distance){
+        this.selected = this.generatorList[i];
+        distance = this.generatorList[i].distance(mouse);
+      }
+    }
+  }
+
+  move(mouse){
+    this.selected.move(mouse);
+  }
+
+
 };
+
+

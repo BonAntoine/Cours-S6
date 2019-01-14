@@ -58,3 +58,53 @@ Haskell est fortement typé statiquement
 Fonction et valeurs commence par une minuscule, contrairement aux types qui commence par une majuscule (False, True...)
 
 maxBound : Donne la limite du type (maxBound :: Int), de même pour minBound
+Integer -> maxBound n'est pas défini (puisqu'on peut donner n'importe quelle précision)
+
+it :: [a]		a --> designe une variable de type
+
+Provoque une erreur : [12.23] :: [Int]  ou bien  [False, 'a']
+
+Guillemet double pour String. Il ne fait aucune difference entre String et [Char] --> "ab" est  égale ) ['a','b']
+
+n-uplet (tuple) : Liste homogène, taille quelconque, par exemple ('a', False) donne it :: (Char, Bool)
+
+
+Exemple de typage de fonction :
+Ici on a une fonction qui prend en argument deux entiers et qui renvoie un entier
+add :: (Int, Int) -> Int
+add (n, m) = n + m
+Autre exemples :
+
+zeroTo :: Int -> [Int]
+zeroTo n = [0..n]
+
+duplique :: Int -> (Int, Int)		//Ici on précise quel type on veut utiliser pour la fonction --> polymorphisme
+duplique x = (x, x)
+
+
+Types polymorphe (Generics en java)
+
+Ex1 :
+Quelles fonctions ont les types suivants :
+--[a] -> a
+Ici elles ne peuvent qu'extraire une valeur de la liste:
+ex1 :: [a] -> a
+ex1 = head
+
+--[a] -> [a]
+ex2 = tail
+ex3 = reverse
+
+ex4 :: [a] -> [a]
+ex4 = id
+
+Fonctions curyfiées :
+
+add' :: Int -> Int -> Int 		//Parentesage implicite : add' :: Int -> ( Int -> Int )
+add' n m = n + m
+
+
+Une class de type, par exemple Num, est un type ou un certain nombre de fonction sont défini
+On peut donc créer des types de nombres, il en existe déjà comme Int, Integer, Word (mot processeur), Float, Double... qui
+ont différente implémentation d'une fonction (exemple la fonction +) --> Surcharge
+

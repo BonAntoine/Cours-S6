@@ -1,0 +1,35 @@
+Différents échanges "points à points" :
+
+-Connexion série simplex
+-Connexion série Half-duplex
+-Connexion série Full-duplex
+
+Dérive de l'horloge (grande série de 1 ou de 0, après on ne sait plus)
+Pour distinguer si on communique ou pas, on utilise le codage NRZ (never return to zero)
+Il suffit d'envoyer un courant soit négatif (0) soit positif (1)
+Codage bipolaire -> quand on change de tension, c'est 1 sinon 0
+Problème d'horologe avec une série de 0, problème avec "si on communique ou pas" aussi,
+mais contrairement aux autres, moins de problème de chauffe.
+
+Codage biphasé (Manchester)
+Front montant ou descendant 
+Pas de chauffe
+Dépendant de la polarité -> désaventage (si on inverse le courant, on a plus la même information)
+
+Codage Miller :
+Pas de changement en milieu de periode -> 0
+Transition en milieu de periode -> 1
+Transition pendant changement de periode -> deux zero de suite
+Il est indépendant de la polarité
+
+En ethernet -> MLT-3
+Si on change de voltage -> 1
+Si on ne change pas -> 0
+On alterne entre 3 niveau (-5v, 0, +5v)
+
+Apparté cours suivant :
+Pour résoudre la suite de zero en MLT-3 (chauffe car tension tjrs a 5 par exemple), on utilise
+l'encodage 4B5B
+
+4B5B + MLT-3 --> Ethernet 100 megabits
+
