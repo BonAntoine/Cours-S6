@@ -14,7 +14,7 @@ function main() {
 
   	canvas.addEventListener('mousedown', handleMouseDown);
   	canvas.addEventListener('mousemove', handleMouseMove);
-	canvas.addEventListener('mouseup', handleMouseUp);
+	  canvas.addEventListener('mouseup', handleMouseUp);
 
     
     engine=new Engine();
@@ -29,6 +29,11 @@ function main() {
 	gen2.max.setXY(160, 170);
 
 	engine.particleManager.generatorList.push(gen1, gen2); // ajoute au tableau generatorList
+
+	var obs1=new Circle(new Vector(100,100),50);
+  	var obs2=new Segment(new Vector(100,200),new Vector(250,300));
+
+  	engine.obstacleManager.obstacleList.push(obs1, obs2);
 
     engine.start();
 }
@@ -45,6 +50,7 @@ function handleMouseDown(event) {
   oldMouse = new Vector(mouseX,mouseY);
 
   	engine.particleManager.select(mouse);
+  	engine.obstacleManager.select(mouse);
 	mouseButton=true;
 
 }
@@ -59,6 +65,7 @@ function handleMouseMove(event) {
 
     if(mouseButton){
   		engine.particleManager.move(new Vector(mouse.x-oldMouse.x, mouse.y-oldMouse.y));
+  		engine.obstacleManager.move(mouse);
   	}
   	oldMouse = new Vector(mouseX,mouseY);
 }

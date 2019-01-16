@@ -108,3 +108,56 @@ Une class de type, par exemple Num, est un type ou un certain nombre de fonction
 On peut donc créer des types de nombres, il en existe déjà comme Int, Integer, Word (mot processeur), Float, Double... qui
 ont différente implémentation d'une fonction (exemple la fonction +) --> Surcharge
 
+Pour définir une constante :
+
+constante = 12
+
+Exmple de fonction avec des if et else :
+absolue :: (Num a, Ordr a) => a -> a
+absolue n = if n <= 0 then -n else n
+/!\ On est obligé de mettre un else sinon tout les cas ne sont pas couvert
+
+Définition d'une fonction avec gardes :
+signe n | n < 0		= -1
+		| n == 0	= 0
+		| otherwise = 1
+
+On peut aussi faire comme ça :
+
+signe' n | n < 0	= -1
+		 | n == 0	= 0
+signe' _			= 1
+
+Définition avec filtrage de motifs :
+
+non :: Bool -> Bool
+non True = False
+non False = True
+--non _ = True
+
+(&&&) :: Bool -> Bool -> Bool
+True &&& True = True
+True &&& False = False
+False &&& True = False
+False &&& False = False
+
+On peut faire plus simple :
+
+(&&&&) :: Bool -> Bool -> Bool
+True &&&& True = True
+_ &&&& _ = False
+
+/!\ L'ordre est important, pour &&&&, ghci dira que la deuxième ligne est redondante si on inverse les deux lignes
+(car tout les cas correspondent à : _ &&& _ = False)
+
+undefined : Cela peut servir de bouche trou
+Par exemple :
+(&&&&&) :: Bool -> Bool -> Bool
+b &&&&& True = b
+_ &&&&& _ = False
+
+undefined &&&&& True donnne undefined
+undefined &&&&& False donnne False
+
+On peut aussi se servir de error, qui a tout les types (error "Message")
+

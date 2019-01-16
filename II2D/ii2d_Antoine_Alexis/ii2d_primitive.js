@@ -9,6 +9,11 @@ class Vector {
     this.y=y;
   }
 
+  distanceTo(vector) {
+  	//A DEBUGUER
+	return Math.sqrt(Math.pow((this.x-vector.x), 2)+Math.pow((this.y-vector.y), 2));
+  }
+
 
   setRandInt(p1, p2){
   	this.x = randInt(p1.x, p2.x);
