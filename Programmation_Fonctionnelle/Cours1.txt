@@ -167,3 +167,7 @@ extraitTete tout@(x:_) = (x, tout)
 @ : décompose la variable tout
 On dit que tout sera de forme tete : queue
 
+--Retourne le 3e element d'une liste
+toisieme :: [a] -> a
+
+
