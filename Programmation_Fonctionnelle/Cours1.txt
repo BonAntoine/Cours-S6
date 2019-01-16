@@ -161,3 +161,9 @@ undefined &&&&& False donnne False
 
 On peut aussi se servir de error, qui a tout les types (error "Message")
 
+: et [] sont les constructeurs de liste
+
+extraitTete tout@(x:_) = (x, tout)
+@ : décompose la variable tout
+On dit que tout sera de forme tete : queue
+
